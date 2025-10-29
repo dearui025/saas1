@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设置 - AI交易机器人</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+            --info-color: #1abc9c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            padding: 12px 25px;
+            border-radius: 8px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 25px;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .card-header i {
+            font-size: 1.5rem;
+            margin-right: 12px;
+            color: var(--secondary-color);
+        }
+        
+        .card-header h2 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: var(--hover-shadow);
+        }
+        
+        .btn-success {
+            background: var(--success-color);
+        }
+        
+        .btn-success:hover {
+            background: #27ae60;
+        }
+        
+        .message {
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            display: none;
+            font-weight: 500;
+        }
+        
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .note {
+            background: #fff3cd;
+            color: #856404;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border: 1px solid #ffeaa7;
+        }
+        
+        .note h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .note ul {
+            padding-left: 20px;
+        }
+        
+        .note li {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            nav a {
+                margin: 5px 0;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cog"></i> AI交易机器人设置</h1>
+            <p>配置API密钥和其他参数</p>
+        </header>
+        
+        <nav>
+            <a href="/"><i class="fas fa-chart-line"></i> 仪表盘</a>
+            <a href="/settings" class="active"><i class="fas fa-cog"></i> 设置</a>
+        </nav>
+        
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-key"></i>
+                <h2>币安API密钥配置</h2>
+            </div>
+            <div id="message" class="message"></div>
+            
+            <form id="binanceForm">
+                <div class="form-group">
+                    <label for="binance_api_key"><i class="fas fa-key"></i> 币安API Key:</label>
+                    <input type="password" id="binance_api_key" name="binance_api_key" value="{{ config.get('BINANCE_API_KEY', '') }}" placeholder="请输入币安API Key">
+                </div>
+                
+                <div class="form-group">
+                    <label for="binance_secret"><i class="fas fa-lock"></i> 币安Secret Key:</label>
+                    <input type="password" id="binance_secret" name="binance_secret" value="{{ config.get('BINANCE_SECRET', '') }}" placeholder="请输入币安Secret Key">
+                </div>
+                
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i> 保存配置
+                </button>
+            </form>
+        </div>
+        
+        <div class="note">
+            <h3><i class="fas fa-lightbulb"></i> 使用说明</h3>
+            <p><strong>1. 获取币安API密钥：</strong></p>
+            <ul>
+                <li>登录币安账户</li>
+                <li>进入API管理页面：https://www.binance.com/zh-CN/my/settings/api-management</li>
+                <li>点击"创建API"</li>
+                <li>设置API名称（如"AI Trading Bot"）</li>
+                <li>启用"读取权限"和"现货/期货交易"权限</li>
+                <li>保存并记录您的API密钥和Secret</li>
+            </ul>
+            <p><strong>2. 重要提醒：</strong></p>
+            <ul>
+                <li>保存配置后，需要重启交易机器人程序才能使新配置生效</li>
+                <li>请妥善保管您的API密钥，不要泄露给他人</li>
+                <li>建议为交易机器人创建独立的币安子账户以隔离风险</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('binanceForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const apiKey = document.getElementById('binance_api_key').value;
+            const secretKey = document.getElementById('binance_secret').value;
+            
+            // 显示加载状态
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 保存中...';
+            submitBtn.disabled = true;
+            
+            // 发送请求
+            fetch('/api/save_binance_keys', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    binance_api_key: apiKey,
+                    binance_secret: secretKey
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messageDiv = document.getElementById('message');
+                if (data.success) {
+                    messageDiv.className = 'message success';
+                    messageDiv.innerHTML = '<i class="fas fa-check-circle"></i> ' + data.message;
+                    messageDiv.style.display = 'block';
+                    
+                    // 3秒后隐藏消息
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                    }, 3000);
+                } else {
+                    messageDiv.className = 'message error';
+                    messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + data.message;
+                    messageDiv.style.display = 'block';
+                }
+            })
+            .catch(error => {
+                const messageDiv = document.getElementById('message');
+                messageDiv.className = 'message error';
+                messageDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> 保存失败: ' + error.message;
+                messageDiv.style.display = 'block';
+            })
+            .finally(() => {
+                // 恢复按钮状态
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
