@@ -564,6 +564,18 @@ cat trading_stats.json | jq '.total_trades, .win_rate, .total_pnl'
 
 ---
 
+## ☁️ 云端部署
+
+项目支持完整的云端部署方案：
+
+### VPS部署
+请参考 [COMPLETE_DEPLOYMENT_GUIDE.md](COMPLETE_DEPLOYMENT_GUIDE.md) 中的详细部署指南。
+
+### Supabase集成
+项目支持将数据存储在Supabase数据库中，并通过Supabase Edge Functions提供Web监控界面。
+
+---
+
 <div align="center">
 
 **⭐ 如果这个项目对你有帮助，欢迎Star支持！⭐**
